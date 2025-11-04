@@ -150,3 +150,142 @@
   </footer>
 </body>
 </html>
+
+  <!-- Fitur lucu & romantis tambahan -->
+  <button id="loveBtn" style="
+    position: fixed;
+    bottom: 100px;
+    right: 20px;
+    background: var(--rose);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  ">💖</button>
+
+  <button id="musicBtn" style="
+    position: fixed;
+    bottom: 30px;
+    right: 20px;
+    background: var(--deep);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  ">🎵</button>
+
+  <button id="modeBtn" style="
+    position: fixed;
+    bottom: 30px;
+    right: 80px;
+    background: #ffd7e2;
+    color: var(--deep);
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+  ">🌙</button>
+
+  <audio id="bgMusic" loop>
+    <source src="https://cdn.pixabay.com/download/audio/2023/03/14/audio_9a507a2e48.mp3?filename=soft-romantic-piano-145038.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    // 🌸 Efek hati melayang
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.style.position = "fixed";
+      heart.style.width = "15px";
+      heart.style.height = "15px";
+      heart.style.background = "#ff6fa3";
+      heart.style.transform = "rotate(45deg)";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.bottom = "-10px";
+      heart.style.opacity = 0.8;
+      heart.style.borderRadius = "2px";
+      heart.style.zIndex = 999;
+      heart.style.animation = "floatUp " + (3 + Math.random() * 2) + "s ease-in forwards";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 500);
+
+    const style = document.createElement("style");
+    style.innerHTML = `
+      @keyframes floatUp {
+        0% { transform: translateY(0) rotate(45deg); opacity: 1; }
+        100% { transform: translateY(-600px) rotate(45deg); opacity: 0; }
+      }
+      body.dark {
+        background: radial-gradient(circle at top, #2b001a, #000);
+        color: #ffe6f0;
+        transition: background 0.6s ease, color 0.6s ease;
+      }
+    `;
+    document.head.appendChild(style);
+
+    // 💘 Tombol Love
+    const loveBtn = document.getElementById("loveBtn");
+    loveBtn.addEventListener("click", () => {
+      const msg = document.createElement("div");
+      msg.textContent = "Aku sayang kamu 😚💞";
+      msg.style.position = "fixed";
+      msg.style.bottom = "120px";
+      msg.style.left = "50%";
+      msg.style.transform = "translateX(-50%)";
+      msg.style.fontSize = "1.2rem";
+      msg.style.background = "rgba(255,255,255,0.8)";
+      msg.style.padding = "0.6rem 1rem";
+      msg.style.borderRadius = "12px";
+      msg.style.color = "#8b3a5b";
+      msg.style.boxShadow = "0 4px 12px rgba(0,0,0,0.15)";
+      msg.style.transition = "opacity 2s ease";
+      document.body.appendChild(msg);
+      setTimeout(() => msg.remove(), 3000);
+
+      // munculkan hati lebih banyak
+      for (let i = 0; i < 10; i++) setTimeout(createHeart, i * 100);
+    });
+
+    // 🎵 Musik play/pause
+    const bgMusic = document.getElementById("bgMusic");
+    const musicBtn = document.getElementById("musicBtn");
+    let playing = false;
+    musicBtn.addEventListener("click", () => {
+      if (!playing) {
+        bgMusic.play();
+        playing = true;
+        musicBtn.textContent = "⏸️";
+      } else {
+        bgMusic.pause();
+        playing = false;
+        musicBtn.textContent = "🎵";
+      }
+    });
+
+    // 🌙 Mode malam romantis
+    const modeBtn = document.getElementById("modeBtn");
+    modeBtn.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+    });
+  </script>
+
+
