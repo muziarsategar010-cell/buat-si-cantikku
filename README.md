@@ -1,0 +1,2 @@
+# buat-si-cantikku
+lopyuuuuu
